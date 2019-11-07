@@ -23,6 +23,7 @@
 		1FD7443C23742A900070F700 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7443423742A900070F700 /* User.swift */; };
 		1FD7443D23742A900070F700 /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7443623742A900070F700 /* Avatars.swift */; };
 		1FD7443E23742A900070F700 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7443723742A900070F700 /* Images.swift */; };
+		1FD7444023743AFA0070F700 /* IntMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7443F23743AFA0070F700 /* IntMod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1FD7443423742A900070F700 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1FD7443623742A900070F700 /* Avatars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatars.swift; sourceTree = "<group>"; };
 		1FD7443723742A900070F700 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		1FD7443F23743AFA0070F700 /* IntMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntMod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				1FD743EA237422630070F700 /* Main.storyboard */,
 				1FD74416237423910070F700 /* TableViewCell.swift */,
 				1FD74414237423530070F700 /* TableViewController.swift */,
+				1FD7443F23743AFA0070F700 /* IntMod.swift */,
 				1FD743ED2374226C0070F700 /* Assets.xcassets */,
 				1FD743EF2374226C0070F700 /* LaunchScreen.storyboard */,
 				1FD743F22374226C0070F700 /* Info.plist */,
@@ -317,6 +320,7 @@
 			files = (
 				1FD7443D23742A900070F700 /* Avatars.swift in Sources */,
 				1FD7443A23742A900070F700 /* Filter.swift in Sources */,
+				1FD7444023743AFA0070F700 /* IntMod.swift in Sources */,
 				1FD7443923742A900070F700 /* Photo.swift in Sources */,
 				1FD7443E23742A900070F700 /* Images.swift in Sources */,
 				1FD7443823742A900070F700 /* Item.swift in Sources */,
