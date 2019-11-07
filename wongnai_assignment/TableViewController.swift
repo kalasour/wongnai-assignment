@@ -11,7 +11,6 @@ import UIKit
 class TableViewController: UITableViewController {
     var gotData: Item?
     var photos: [Photo]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +23,13 @@ class TableViewController: UITableViewController {
         fetchData(handler: { [weak self] data in
             self?.fetched(data:data)
         })
+    }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        fetchData(handler: { [weak self] data in
+            self?.fetched(data:data)
+        })
+        sender.endRefreshing()
     }
     
     func fetched(data:Item?) {
