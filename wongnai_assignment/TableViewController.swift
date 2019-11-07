@@ -9,7 +9,9 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
+    var gotData: Item?
+    var photos: [Photo]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +20,39 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        fetchData(handler: { [weak self] data in
+            self?.fetched(data:data)
+        })
     }
-
+    
+    func fetched(data:Item?) {
+        gotData = data
+        if let inData = gotData {
+            photos = inData.photos
+            print(inData)
+        }else {
+            print("Can not get data.")
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func fetchData(handler: @escaping ((_ data:Item?)->Void)) {
+        if let url = URL(string: "https://api.500px.com/v1/photos?feature=popular&page=1") {
+           URLSession.shared.dataTask(with: url) { data, response, error in
+              if let data = data {
+                  do {
+                    let res = try JSONDecoder().decode(Item.self, from: data)
+                    handler(res)
+                  } catch let error {
+                     print(error)
+                  }
+               }
+           }.resume()
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
