@@ -34,8 +34,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-8c-WSo">
-                                            <rect key="frame" x="104" y="12" width="40" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-8c-WSo">
+                                            <rect key="frame" x="104" y="12" width="243.5" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PDm-Bz-jw7" secondAttribute="bottom" constant="12" id="7st-iN-PQc"/>
                                         <constraint firstItem="Ndi-8c-WSo" firstAttribute="top" secondItem="4nJ-uO-NTm" secondAttribute="top" constant="12" id="Bid-XM-22r"/>
                                         <constraint firstItem="Mut-HI-BuC" firstAttribute="leading" secondItem="DH1-Qq-hqW" secondAttribute="trailing" constant="4" id="Gof-aM-Nbw"/>
-                                        <constraint firstItem="DH1-Qq-hqW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ndi-8c-WSo" secondAttribute="trailing" constant="80" id="GsO-91-acX"/>
+                                        <constraint firstItem="DH1-Qq-hqW" firstAttribute="leading" secondItem="Ndi-8c-WSo" secondAttribute="trailing" constant="10" id="GsO-91-acX"/>
                                         <constraint firstItem="PDm-Bz-jw7" firstAttribute="top" secondItem="Ndi-8c-WSo" secondAttribute="bottom" constant="9" id="MfL-Nz-GXy"/>
                                         <constraint firstItem="DH1-Qq-hqW" firstAttribute="top" secondItem="4nJ-uO-NTm" secondAttribute="top" constant="16" id="Nnd-N3-1lE"/>
                                         <constraint firstItem="Mut-HI-BuC" firstAttribute="top" secondItem="4nJ-uO-NTm" secondAttribute="top" constant="15" id="Owk-gU-AC5"/>

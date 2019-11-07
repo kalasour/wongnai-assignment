@@ -63,7 +63,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if let unwrapPhotos = photos{
+        if let unwrapPhotos = photos {
             return unwrapPhotos.count
         } else {
             return 0
@@ -73,7 +73,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? TableViewCell else { return UITableViewCell() }
-        if let unwrapPhotos = photos{
+        if let unwrapPhotos = photos {
             cell.name.text = (unwrapPhotos[indexPath.row].name)!
             cell.voted.text = ((unwrapPhotos[indexPath.row].positive_votes_count)!).delimiter
             cell.detail.text = (unwrapPhotos[indexPath.row].description)!
