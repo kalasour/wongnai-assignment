@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		1FD743E5237422630070F700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD743E4237422630070F700 /* AppDelegate.swift */; };
 		1FD743E7237422630070F700 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD743E6237422630070F700 /* SceneDelegate.swift */; };
-		1FD743E9237422630070F700 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD743E8237422630070F700 /* ViewController.swift */; };
 		1FD743EC237422630070F700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD743EA237422630070F700 /* Main.storyboard */; };
 		1FD743EE2374226C0070F700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD743ED2374226C0070F700 /* Assets.xcassets */; };
 		1FD743F12374226C0070F700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD743EF2374226C0070F700 /* LaunchScreen.storyboard */; };
 		1FD743FC2374226C0070F700 /* wongnai_assignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD743FB2374226C0070F700 /* wongnai_assignmentTests.swift */; };
 		1FD744072374226C0070F700 /* wongnai_assignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD744062374226C0070F700 /* wongnai_assignmentUITests.swift */; };
+		1FD74415237423530070F700 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD74414237423530070F700 /* TableViewController.swift */; };
+		1FD74417237423910070F700 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD74416237423910070F700 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		1FD743E1237422630070F700 /* wongnai_assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wongnai_assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD743E4237422630070F700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FD743E6237422630070F700 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1FD743E8237422630070F700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1FD743EB237422630070F700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FD743ED2374226C0070F700 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FD743F02374226C0070F700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		1FD744022374226C0070F700 /* wongnai_assignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wongnai_assignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD744062374226C0070F700 /* wongnai_assignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wongnai_assignmentUITests.swift; sourceTree = "<group>"; };
 		1FD744082374226C0070F700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD74414237423530070F700 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		1FD74416237423910070F700 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				1FD743E4237422630070F700 /* AppDelegate.swift */,
+				1FD744182374259E0070F700 /* DataModel */,
 				1FD743E6237422630070F700 /* SceneDelegate.swift */,
-				1FD743E8237422630070F700 /* ViewController.swift */,
 				1FD743EA237422630070F700 /* Main.storyboard */,
+				1FD74416237423910070F700 /* TableViewCell.swift */,
+				1FD74414237423530070F700 /* TableViewController.swift */,
 				1FD743ED2374226C0070F700 /* Assets.xcassets */,
 				1FD743EF2374226C0070F700 /* LaunchScreen.storyboard */,
 				1FD743F22374226C0070F700 /* Info.plist */,
@@ -126,6 +130,13 @@
 				1FD744082374226C0070F700 /* Info.plist */,
 			);
 			path = wongnai_assignmentUITests;
+			sourceTree = "<group>";
+		};
+		1FD744182374259E0070F700 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD743E9237422630070F700 /* ViewController.swift in Sources */,
 				1FD743E5237422630070F700 /* AppDelegate.swift in Sources */,
+				1FD74417237423910070F700 /* TableViewCell.swift in Sources */,
+				1FD74415237423530070F700 /* TableViewController.swift in Sources */,
 				1FD743E7237422630070F700 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
