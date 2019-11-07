@@ -20,13 +20,13 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        fetchData(handler: { [weak self] data in
+        fetchData(page:1,handler: { [weak self] data in
             self?.fetched(data:data)
         })
     }
     
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        fetchData(handler: { [weak self] data in
+        fetchData(page:1,handler: { [weak self] data in
             self?.fetched(data:data)
         })
         sender.endRefreshing()
@@ -36,17 +36,32 @@ class TableViewController: UITableViewController {
         gotData = data
         if let inData = gotData {
             photos = inData.photos
-            print("Fetched data.")
-        }else {
-            print("Can not get data.")
+            
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    func fetchData(handler: @escaping ((_ data:Item?)->Void)) {
-        if let url = URL(string: "https://api.500px.com/v1/photos?feature=popular&page=1") {
+    func fetchedKeepOld(data:Item?) {
+        
+        
+        if let inData = data {
+            
+            if let unwrapPhotos = photos{
+                if let unwrapNewPhotos = inData.photos{
+                    photos = unwrapPhotos + unwrapNewPhotos
+                }
+            }
+            gotData = data
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func fetchData(page:Int,handler: @escaping ((_ data:Item?)->Void)) {
+        if let url = URL(string: "https://api.500px.com/v1/photos?feature=popular&page=\(page)") {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
@@ -68,7 +83,6 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
         if let unwrapPhotos = photos {
             return unwrapPhotos.count
         } else {
@@ -83,8 +97,6 @@ class TableViewController: UITableViewController {
             cell.name.text = (unwrapPhotos[indexPath.row].name)!
             cell.voted.text = ((unwrapPhotos[indexPath.row].positive_votes_count)!).delimiter
             cell.detail.text = (unwrapPhotos[indexPath.row].description)!
-        }else {
-            print("can not get photos")
         }
         
         
@@ -102,6 +114,23 @@ class TableViewController: UITableViewController {
             }
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView,willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
+        if let unwrapPhotos = photos{
+            let total = unwrapPhotos.count
+            var currentPage = 0
+            if let unwrapData = gotData{
+                if let unwrapCurrentPage = unwrapData.current_page{
+                    currentPage = unwrapCurrentPage
+                }
+            }
+            if(indexPath.row + 1 == total){
+                fetchData(page: currentPage + 1, handler: { [weak self] data in
+                    self?.fetchedKeepOld(data:data)
+                })
+            }
+        }
     }
     
     
