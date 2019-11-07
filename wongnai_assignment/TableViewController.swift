@@ -9,8 +9,9 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-    var gotData: Item?
-    var photos: [Photo]?
+    private var gotData: Item?
+    private var photos: [Photo]?
+    private let insertEvery:Int = 5
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,7 +85,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if let unwrapPhotos = photos {
-            return unwrapPhotos.count
+            return  ((unwrapPhotos.count)+(unwrapPhotos.count/(insertEvery - 1)))-1
         } else {
             return 0
         }
@@ -92,28 +93,34 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? TableViewCell else { return UITableViewCell() }
-        if let unwrapPhotos = photos {
-            cell.name.text = (unwrapPhotos[indexPath.row].name)!
-            cell.voted.text = ((unwrapPhotos[indexPath.row].positive_votes_count)!).delimiter
-            cell.detail.text = (unwrapPhotos[indexPath.row].description)!
-        }
-        
-        
-        
-        if let imageURL = URL(string: (photos![indexPath.row].image_url)![0]) {
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageURL)
-                if let data = data {
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        cell.img.image = image
-                        cell.img.layer.masksToBounds = true
+        let i:Int = indexPath.row + 1
+        if(i % insertEvery != 0){
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? TableViewCell else { return UITableViewCell() }
+            let calIndex = (i-(i/insertEvery))-1
+            if let unwrapPhotos = photos {
+                cell.name.text = (unwrapPhotos[calIndex].name)!
+                cell.voted.text = ((unwrapPhotos[calIndex].positive_votes_count)!).delimiter
+                cell.detail.text = (unwrapPhotos[calIndex].description)!
+            }
+            if let imageURL = URL(string: (photos![calIndex].image_url)![0]) {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: imageURL)
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.img.image = image
+                            cell.img.layer.masksToBounds = true
+                        }
                     }
                 }
             }
+            return cell
+        }else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InsertCell") else { return UITableViewCell() }
+            return cell
         }
-        return cell
+        
+        
     }
     
     override func tableView(_ tableView: UITableView,willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
