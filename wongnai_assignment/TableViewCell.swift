@@ -14,9 +14,13 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var voted: UILabel!
     @IBOutlet weak var img: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        name.textColor=UIColor(hexFromString: "#1D1D1D")
+        detail.textColor=UIColor(hexFromString: "#3F3F3F")
+        voted.textColor=UIColor(hexFromString: "#979797")
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
